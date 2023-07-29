@@ -22,8 +22,8 @@ int main()
     //printf("division function return number: %d", division(number));
     //forNestedLoop(); //for example
     //whileNestedLoop(); //while example
-    //arrayExample();
-    pointers();
+    arrayExample();
+    //pointers();
     //memoryAllocation();
    return 0;
 }
@@ -83,6 +83,11 @@ void whileNestedLoop(){
 //======================================================================
 void arrayExample(){
     int myNumbers[7] = {25, 50, 75, 100};
+    int i=0, count=0;
+    while(myNumbers[count]) {
+       count++;
+    }
+    printf("count = %d\n", count);
     printf("Index 0: %d\n", myNumbers[0]);
     myNumbers[0] = 33;
     printf("Index 0: %d\n", myNumbers[0]);
