@@ -100,6 +100,21 @@ void arrayExample(){
     for (int i=0; i<4; i++) {
         printf("%d\n", myNumbers[i]);
     }
+    // char section
+    char greetings[] = "Hello World!";
+    printf("%s\n", greetings);
+
+    char carName[] = "Volvo";
+    for (i = 0; i < 5; ++i) {
+        printf("%c\n", carName[i]);
+    }
+
+    char greetings2[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};
+    printf("%s\n", greetings);
+    printf("%lu\n", sizeof(greetings));   // Outputs 13
+    printf("%lu\n", sizeof(greetings2));  // Outputs 13
+
+
 }
 //======================================================================
 void  pointers(){
