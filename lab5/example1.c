@@ -3,17 +3,10 @@
 
 #define N 5
 
-/* Assignment: 3 Campus: Beer Sheva
- Author: Genady Kogan, ID: 328956537 */
-
-
 //task1
 int MaxSumDiagonal(int arr[][N]);
 //task2
 int RotateMatrix90(int arr[][N]);
-
-
-
 
 int main() {
 
@@ -32,7 +25,6 @@ int main() {
             scanf("%d", &arr[i][j]);
         }
     }
-
 
     printf("\n");
 
