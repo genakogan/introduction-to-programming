@@ -1,98 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-    int **matrix;
-    int rows = 3;
-    int cols = 4;
 
-    // Allocate memory for the initial 2D array
-    matrix = (int **)malloc(rows * sizeof(int *));
-    if (matrix == NULL) {
-        printf("Memory allocation failed.\n");
-        return 1;
-    }
 
-    for (int i = 0; i < rows; i++) {
-        matrix[i] = (int *)malloc(cols * sizeof(int));
-        if (matrix[i] == NULL) {
-            printf("Memory allocation failed.\n");
+void swap(int * num1, int * num2){
+    printf("num1 is: %d, num2 is %d\n", *num1, *num2);
+    int temp;
+    temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+    printf("num1 is: %d, num2 is %d", *num1, *num2);
 
-            // Free previously allocated memory before exiting
-            for (int j = 0; j < i; j++) {
-                free(matrix[j]);
-            }
-            free(matrix);
+}
+void  pointers(){
+    int x = 10,num1,num2;     // defining a variable
+    int *p;         // defining a pointer
+    p = &x;         // the pointer receives the address of the variable
+    printf("%p \n", p);     // for example 0060FEA8 - machine address of variable x
+    printf("p: %d \n",  *p);
+    int y = *p;     // assigning the variable y the value at the address pointed to by pointer p
+    printf("y: %d \n",  y);
+    *p = 45;
+    printf("y = %d \n", x);
+    printf("y = %d \n", y);
 
-            return 1;
-        }
-    }
+    num1 = x;
+    num2 = y;
 
-    // Initialize the matrix
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            matrix[i][j] = i * cols + j;
-        }
-    }
+    // address of num1 and num2 is passed
+    swap(&num1,&num2);
+}
 
-    // Print the original matrix
-    printf("Original matrix:\n");
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            printf("%d\t", matrix[i][j]);
-        }
-        printf("\n");
-    }
-
-    // Resize the matrix by adding one more row
-    int new_rows = 4;
-    int **temp_matrix = (int **)realloc(matrix, new_rows * sizeof(int *));
-    if (temp_matrix == NULL) {
-        printf("Memory reallocation failed.\n");
-
-        // Free original memory before exiting
-        for (int i = 0; i < rows; i++) {
-            free(matrix[i]);
-        }
-        free(matrix);
-
-        return 1;
-    }
-    matrix = temp_matrix;
-
-    // Allocate memory for the new row
-    matrix[rows] = (int *)malloc(cols * sizeof(int));
-    if (matrix[rows] == NULL) {
-        printf("Memory allocation failed.\n");
-
-        // Free original memory before exiting
-        for (int i = 0; i <= rows; i++) {
-            free(matrix[i]);
-        }
-        free(matrix);
-
-        return 1;
-    }
-
-    // Initialize the new row
-    for (int j = 0; j < cols; j++) {
-        matrix[rows][j] = (rows + 1) * cols + j;
-    }
-
-    // Print the resized matrix
-    printf("Resized matrix:\n");
-    for (int i = 0; i < new_rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            printf("%d\t", matrix[i][j]);
-        }
-        printf("\n");
-    }
-
-    // Free the memory
-    for (int i = 0; i < new_rows; i++) {
-        free(matrix[i]);
-    }
-    free(matrix);
-
+int main()
+{
+    pointers();
     return 0;
 }
