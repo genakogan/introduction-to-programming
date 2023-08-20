@@ -1,0 +1,27 @@
+if (base_test)
+
+		{
+
+		return given_value;
+
+		}
+
+else if (another_base_test)
+
+	{
+
+	return other_given_value;
+
+	}
+
+else
+
+	{
+
+	// Giving a Statement here;
+
+	recursive call;
+
+	}
+
+
