@@ -7,7 +7,7 @@
 #define size 80
 enum boolean { FALSE = 0, TRUE };
 //declaration of function
-void print(int, int, int);
+void print(int start, int end, int skip);
 int fixstr(char *);
 int CheckSmall(char *);
 int CheckOneNum(char *);
@@ -36,14 +36,15 @@ int main() {
 		if (numprob == 1) {
 
 			int start, end, skip;
-			printf("Enter start number:---> ");
-			scanf("%d", &start);
-			printf("Enter end number:---> ");
-			scanf("%d", &end);
-			printf("Enter skip number:---> ");
-			scanf("%d", &skip);
+            printf("Enter start number:---> ");
+            scanf("%d", &start);
+            printf("Enter end number:---> ");
+            scanf("%d", &end);
+            printf("Enter skip number:---> ");
+            scanf("%d", &skip);
 
-			print(start, end, skip);
+            printf("Printing sequence:\n");
+            print(start, end, skip);
 
 		}//if 1
 		 //-------------
@@ -153,31 +154,23 @@ free(arr);
 //---------------------------task1-----------------------------
 void print(int start, int end, int skip) {
 
-	if (skip == 0) {
-		printf("%d", start);
-
-	}
-	if (start <= end) {
-
-		printf("%d\n", start);
-
-		print(start + skip, end, skip);
-	}
-
+    if (start <= end) {
+        printf("%d\n", start);
+        print(start + skip, end, skip);
+    }
 }
 //---------------------------task2-----------------------------
 
 
 int fixstr(char *str) {
 
-	if (str[0] == '\0')
-		return 0;
+    if (*str == '\0')
+        return 0;
 
-	if ((str[0] <= 'Z' && str[0] >= 'A') || (str[0] <= 'z' && str[0] >= 'a'))
-		putchar(str[0]);
+    if ((*str >= 'A' && *str <= 'Z') || (*str >= 'a' && *str <= 'z'))
+        putchar(*str);
 
-
-	return fixstr(str + 1);
+    return fixstr(str + 1);
 }
 //---------------------------task3-----------------------------
 
@@ -185,25 +178,24 @@ int CheckSmall(char *a) {
 
 	if ((*a >= 'A' && *a <= 'Z') || (*a >= '0' && *a <= '9'))
 		return 0;
-	if (*a == 0)
-
-		return 1;
+    if (*a == '\0')
+        return 1;
 	CheckSmall(a + 1);
 
 }
 
 //----------------------task4----------------------
 
-int CheckOneNum(char *str)
-{
+int CheckOneNum(char *str) {
+    if (!(*str >= '0' && *str <= '9'))
+        return 0;
+    else if ((*str >= '0' && *str <= '9'))
+        return 1;
 
-	if ((*str >= '0' && *str <= '9'));
-	return 1;
-	if (*str == 0)
-		return 0;
-	CheckOneNum(str + 1);
+    if (*str == '\0')
+        return 1;
+    return CheckOneNum(str + 1);
 }
-
 
 //----------------------task5----------------------
 
