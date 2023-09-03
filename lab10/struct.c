@@ -32,7 +32,7 @@ int old(struct lecturer *plecturer, int sizeInMain, struct date pDate);
 int main() {
 
 	struct lecturer *sce = NULL;
-	struct date *numData = (struct date*)malloc(sizeof(struct date));
+	struct date *numDate = (struct date*)malloc(sizeof(struct date));
 	int size, len;
 	char nameOfCourse[sizestr], name1[sizestr], name2[sizestr];
 	//-------------------------------------------------
